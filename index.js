@@ -17,7 +17,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "DIRECT_MESSAGES", "GUILD_INTEGRATIONS"] });
 
-client.login(process.env.TOKEN);
+client.login('MTAxOTQ4NjAyOTIwNTQ3MTMxMw.GBkT8I.dqP_NZ7lH6UiH9wuYm1zrsGKbRzKoNNI54Nz1A');
 
 
 
