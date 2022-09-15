@@ -1,15 +1,4 @@
-const express = require('express');
-const moment = require('moment')
 
-const app = express();
-
-app.get('/', (req, res) => {
-  res.send('Hello Express app!')
-});
-
-app.listen(3000, () => {
-  console.log('server started');
-});
 
 const Discord = require('discord.js');
 
@@ -22,7 +11,7 @@ client.login(process.env.BOT);
 client.on('guildMemberAdd', guildMember => { 
 	const emb = new Discord.MessageEmbed()
 	.setTitle('Benvenuto!🎉')
-	.setThumbnail(guildMember.guild.iconURL())
+	.setThumbnail(guildMember.guild.iconURL({size: 1024}))
 	.setDescription('**Oi grazie per essere entrato😉**\n\ndivertiti, mostra le tue creazioni, ma soprattutto, aiutaci a diventare grandi (non ti perdere i giveaway). BENVENUTO DI NUOVO!')
 	.setFooter(`By ${client.user.tag}`)
 	.setColor('RANDOM')
@@ -80,6 +69,31 @@ client.once('ready', () => {
 					required: true
 				}
 
+			]
+		})
+
+		guild.commands.create({
+			name: 'vendi',
+			description: 'Comando solo per l owner',
+			options: [
+				{
+					name: 'prodotto',
+					description: 'inserire titolo del prodotto',
+					type: 'STRING',
+					required: true,
+				},
+				{
+					name: 'descrizione',
+					description: 'Inserisci una descrizone',
+					type: 'STRING',
+					required: true,
+				},
+				{
+					name: 'link',
+					description: 'Inserisci il link',
+					type: 'STRING',
+					required: true,
+				}
 			]
 		})
 	})
@@ -263,6 +277,28 @@ client.on('interactionCreate', interaction => {
 
 
 
+	} else if(interaction.commandName === 'vendi'){
+		if(!interaction.member.roles.cache.has('1019267950500388886')) return interaction.reply('Non hai il permesso')
+
+		const title = interaction.options.getString('prodotto')
+		const desc = interaction.options.getString('descrizione')
+		const link = interaction.options.getString('link')
+		const chan = interaction.guild.channels.cache.get('1019648984840679554')
+
+		const embed = new Discord.MessageEmbed()
+			.setTitle(`${title}`)
+			.setDescription(`${desc}`)
+			.addFields(
+				{
+					name: 'link',
+					value: `${link}`,
+					inline: false
+				}
+			)
+		
+		interaction.reply('Venduto')
+		chan.send('@here')
+		chan.send({embeds: [embed]})
 	}
 })
 
