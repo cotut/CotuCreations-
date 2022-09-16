@@ -17,6 +17,10 @@ client.on('guildMemberAdd', guildMember => {
 	.setColor('RANDOM')
     guildMember.guild.channels.cache.get('1019250025332752519').send(`<@${guildMember.user.id}>`)
 	guildMember.guild.channels.cache.get('1019250025332752519').send({embeds: [emb]})
+
+	const role = guildMember.guild.roles.cache.get('1019266493822804018')
+
+	guildMember.roles.add(role)
 	
 });
 
