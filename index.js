@@ -126,18 +126,14 @@ client.on('interactionCreate', interaction => {
 				value: member.user.tag,
 				inline: false
 			},
-			{
-				name: 'Joined at:',
-				value: moment(member.joinedAt).format('MMM/DD/YYYY'),
-				inline: false
-			},
-			{
+    	{
 				name: 'Roles:',
 				value: '[STILL WORKING ON]',
 				inline: false
 			}
       )
 		.setTimestamp()
+		.setFooter('Cotu creations', 'https://i.ibb.co/wNkZG5V/a89c4048ded8.png')
 
 
 		interaction.reply({embeds: [ABOUT_EMBED]})
