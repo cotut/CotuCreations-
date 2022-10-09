@@ -107,7 +107,7 @@ client.on('interactionCreate', interaction => {
 	if(!interaction.isCommand) return
 
 	if(interaction.commandName === 'ping'){
-		interaction.reply(`Hey ${interaction.user}, il tuo ping é di ||${interaction.author.ws.ping}||.`)
+		interaction.reply(`Hey ${interaction.user}, il tuo ping é di ||${interaction.user.ws.ping}||.`)
 	} else if(interaction.commandName === 'about') {
 
 		const member = interaction.options.getMember('user');
