@@ -107,7 +107,7 @@ client.on('interactionCreate', interaction => {
 	if(!interaction.isCommand) return
 
 	if(interaction.commandName === 'ping'){
-		interaction.reply(`Hey ${interaction.user}, il tuo ping é di ||${client.ws.ping}||.`)
+		interaction.reply(`Hey ${interaction.user}, il tuo ping é di ||${interaction.author.ws.ping}||.`)
 	} else if(interaction.commandName === 'about') {
 
 		const member = interaction.options.getMember('user');
@@ -128,7 +128,7 @@ client.on('interactionCreate', interaction => {
 			},
     	{
 				name: 'Roles:',
-				value: '[STILL WORKING ON]',
+				value: `${member.roles.cache.map(role => role).join('  |  ')}`,
 				inline: false
 			}
       )
