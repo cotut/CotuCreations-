@@ -18,23 +18,16 @@ client.on('ready', () => {
 
 client.on('messageCreate', msg => {
 
-	const cword = ['cock', 'Cock', 'cOck', 'coCk', 'cocK', 'COCK', 'COck', 'COCk', 'c0ck', 'C0ck']
-
-	const dWord = ['dick', 'Dick', 'dIck', 'diCk', 'dicK', 'DICK', 'DIck', 'DICk', 'd1ck', 'D1ck']
+	const c = ['cock', 'Cock', 'cOck', 'coCk', 'cocK', 'COCK', 'COck', 'COCk', 'c0ck', 'C0ck']
+	const d = ['dick', 'Dick', 'dIck', 'diCk', 'dicK', 'DICK', 'DIck', 'DICk', 'd1ck', 'D1ck']
 
 	
-	if(cword.some(c => msg.content.includes(c)) || dword.some(d => msg.content.includes(d))){
+	if(cword.some(c => msg.content.includes(c)) || d.some(d => msg.content.includes(d))){
 		if(msg.author.id === client.user.id) return
 
 		const logss = msg.guild.channels.cache.find(chan => chan.name === 'logs')
 
 		
-		
-
-
-
-
-
 		const log = new Discord.MessageEmbed()
 			.setTitle(`Moderation Logs`)
 			.addFields(
