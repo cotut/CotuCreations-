@@ -16,12 +16,15 @@ client.on('ready', () => {
 
 client.on('messageCreate', msg => {
 
-	const badword = ['cock', 'Cock', 'cOck', 'coCk', 'cocK', 'COCK', 'COck', 'COCk']
+	const iword = ['cock', 'Cock', 'cOck', 'coCk', 'cocK', 'COCK', 'COck', 'COCk']
 
 	
-	if(badword.some(b => msg.content.includes(b))){
+	if(iword.some(b => msg.content.includes(b))){
 		if(msg.author.id === client.user.id) return
 
+		const logss = msg.guild.channels.cache.find(chan => chan.name === 'logs')
+
+		
 		
 
 
@@ -55,6 +58,13 @@ client.on('messageCreate', msg => {
 			.setFooter('ModLux Moderation Service - MLMS')
 			.setColor('RANDOM')
 
-		msg.reply({embeds: [log]})
+		if(!msg.guild.channels.cache.find(chan => chan.name === 'logs')){
+			return
+		} else {
+			logss.send({embeds: [log]})
+		}
+
+
+		
 	}
 })
