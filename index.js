@@ -10,6 +10,8 @@ client.login(process.env.BOT);
 
 client.on('ready', () => {
 	console.log('Project ready')
+
+	client.user.setActivity(`${client.guilds.cache.size} servers`, {type: 'WATCHING'})
 })
 
 
