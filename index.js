@@ -16,10 +16,12 @@ client.on('ready', () => {
 
 client.on('messageCreate', msg => {
 
-	const iword = ['cock', 'Cock', 'cOck', 'coCk', 'cocK', 'COCK', 'COck', 'COCk']
+	const cword = ['cock', 'Cock', 'cOck', 'coCk', 'cocK', 'COCK', 'COck', 'COCk', 'c0ck', 'C0ck']
+
+	const dWord = ['dick', 'Dick', 'dIck', 'diCk', 'dicK', 'DICK', 'DIck', 'DICk', 'd1ck', 'D1ck']
 
 	
-	if(iword.some(b => msg.content.includes(b))){
+	if(cword.some(c => msg.content.includes(c)) || dword.some(d => msg.content.includes(d))){
 		if(msg.author.id === client.user.id) return
 
 		const logss = msg.guild.channels.cache.find(chan => chan.name === 'logs')
