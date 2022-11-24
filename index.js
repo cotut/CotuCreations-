@@ -16,10 +16,10 @@ client.on('ready', () => {
 
 client.on('messageCreate', msg => {
 
-	const iword = ['cock', 'dick']
+	const iword = ['cock', 'Cock', 'cOck', 'coCk', 'cocK', 'COCK', 'COck', 'COCk']
 
 	
-	if(iword.some(b => msg.content.includes(b.toLowerCase()))){
+	if(iword.some(b => msg.content.includes(b))){
 		if(msg.author.id === client.user.id) return
 
 		const logss = msg.guild.channels.cache.find(chan => chan.name === 'logs')
