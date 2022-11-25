@@ -18,11 +18,13 @@ client.on('ready', () => {
 
 client.on('messageCreate', msg => {
 
-	const c2 = ['cock', 'Cock', 'cOck', 'coCk', 'cocK', 'COCK', 'COck', 'COCk', 'c0ck', 'C0ck']
-	const d = ['dick', 'Dick', 'dIck', 'diCk', 'dicK', 'DICK', 'DIck', 'DICk', 'd1ck', 'D1ck']
+	const c2 = ['cock', 'c o c k']
+	const d = ['dick', 'd i c k']
+
+	const msg1 = msg.content.toLowerCase()
 
 	
-	if(c2.some(c => msg.content.includes(c)) || d.some(d => msg.content.includes(d))){
+	if(c2.some(c => msg1.includes(c)) || d.some(d => msg1.includes(d))){
 		if(msg.author.id === client.user.id) return
 
 		const logss = msg.guild.channels.cache.find(chan => chan.name === 'logs')
