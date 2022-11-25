@@ -11,7 +11,7 @@ client.login(process.env.BOT);
 client.on('ready', () => {
 	console.log('Project ready')
 
-	client.user.setActivity("**> /help**", {type: 'WATCHING'})
+	client.user.setActivity("> /help", {type: 'PLAYING'})
 })
 
 
