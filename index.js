@@ -11,14 +11,14 @@ client.login(process.env.BOT);
 client.on('ready', () => {
 	console.log('Project ready')
 
-	client.user.setActivity(`${client.guilds.cache.size} servers`, {type: 'WATCHING'})
+	client.user.setActivity("**> /help**", {type: 'WATCHING'})
 })
 
 
 
 client.on('messageCreate', msg => {
 
-	const c2 = ['cock', 'c o c k']
+	const c2 = ['cock', 'c o c k', 'coc k', 'co ck', 'c ock', 'co c k', 'c o ck']
 	const d = ['dick', 'd i c k']
 
 	const msg1 = msg.content.toLowerCase()
@@ -67,5 +67,14 @@ client.on('messageCreate', msg => {
 
 
 		
+	}
+})
+
+
+client.on('interactionCreate', inte => {
+	if(!inte.isCommand) return
+
+	if(inte.commandName === 'ping'){
+		inte.reply({content: `**Your latency is of *${client.ws.ping}* ms**`, ephemeral: true})
 	}
 })
