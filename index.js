@@ -72,7 +72,7 @@ client.on('messageCreate', msg => {
 
 
 client.on('interactionCreate', inte => {
-	if(!inte.isCommand) return
+	if(!inte.isChatInputCommand) return
 
 	if(inte.commandName === 'ping'){
 		inte.reply({content: `**Your latency is of *${client.ws.ping}* ms**`, ephemeral: true})
