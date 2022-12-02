@@ -11,7 +11,7 @@ client.login(process.env.BOT);
 client.on('ready', () => {
 	console.log('Project ready')
 
-	client.user.setActivity("> /help", {type: 'PLAYING'})
+	client.user.setActivity(`/help in ${client.guilds.cache.size} servers`, {type: 'PLAYING'})
 })
 
 
@@ -182,5 +182,33 @@ client.on('interactionCreate', inte => {
 
 			inte.reply({embeds: [info2]})
 		}
+	} else if(inte.commandName === 'ban'){
+		
+		if(inte.user.id === client.id) return inte.reply({content: 'Bro, did u really try to ban me?', ephemeral: true})
+		
+		const reply1 = new Discord.MessageEmbed()
+			.setDescription(`You don't have the permission`)
+			.setColor('RED')
+		
+		if(!inte.member.permissions.has('BAN_MEMBERS')) return inte.reply({embeds: [reply1], ephemeral: true})
+		
+		const user = inte.options.getMember('user')
+		let reason = inte.options.getString('reason')
+
+		if(!reason){
+			let reason = 'none'
+			console.log(reason)
+		} else {
+			console.log(reason)
+		}
+
+
+		const reply = new Discord.MessageEmbed()
+			.setDescription(`Banned <@${user.id}> succesfully`)
+			.setColor('GREEN')
+
+		inte.reply({embeds: [reply], ephemeral: true})
+
+		user.ban()
 	}
 })
